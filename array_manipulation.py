@@ -23,7 +23,8 @@ def array_manipulation(n, queries):
     array = [0] * n  # Create 0-filled array or length n
     for query in queries:
         array[query[0] - 1] += query[2]
-    
+        if query[1] < n:
+            array[query[1]] -= query[2]  # To compensate on accumulate
     # Could do a manual loop and do O(n) instead of O(n*n)
     return max(itertools.accumulate(array))
 
